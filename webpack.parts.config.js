@@ -248,6 +248,8 @@ exports.page = ({
   if (js) entry.js = path.join(__dirname, js)
   if (css) entry.css = path.join(__dirname, css)
 
+  const filename = name === 'index' ? 'index.html' : `${name}/index.html`
+
   return {
     output: {
       chunkFilename: '[name].[chunkhash:4].js',
@@ -258,7 +260,7 @@ exports.page = ({
       new HtmlWebpackPlugin({
         template: html,
         excludeAssets: [/css.*.js/],
-        filename: `${name}.html`,
+        filename,
         minify: optimize
           ? {
               collapseWhitespace: true,

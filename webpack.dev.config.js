@@ -12,7 +12,6 @@ const developmentConfig = merge([
       stats: 'minimal',
       open: true,
       overlay: true,
-      publicPath: '/',
       host: '0.0.0.0'
     },
 
