@@ -39,4 +39,6 @@ const pages = pagesConfigs.map((config) =>
   })
 )
 
+console.log(pages)
+
 module.exports = pages.map((page) => merge([developmentConfig, page]))

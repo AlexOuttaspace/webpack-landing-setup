@@ -87,7 +87,7 @@ exports.loadFavicons = () => ({
     new FaviconsWebpackPlugin({
       logo: './favicon/favicon.png',
       prefix: 'icons-[hash:4]/',
-      persistentCache: false,
+      persistentCache: true,
       inject: true,
       background: '#fff',
       emitStats: false,
@@ -231,29 +231,38 @@ exports.loadFonts = ({ include, exclude } = {}) => {
   }
 }
 
-exports.page = ({ js, css, html, optimize } = {}) => ({
-  output: {
-    chunkFilename: '[name].[chunkhash:4].js',
-    filename: '[name].[chunkhash:4].js'
-  },
-  entry: {
-    js: path.join(__dirname, js),
-    css: path.join(__dirname, css)
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: html,
-      excludeAssets: [/css.*.js/],
-      minify: optimize
-        ? {
-            collapseWhitespace: true,
-            removeComments: false
-          }
-        : false
-    }),
-    new HtmlWebpackExcludeAssetsPlugin()
-  ]
-})
+exports.page = ({
+  js,
+  css,
+  html = require.resolve('html-webpack-plugin/default_index.ejs'),
+  optimize
+}) => {
+  const entry = {}
+
+  if (js) entry.js = path.join(__dirname, js)
+  if (css) entry.css = path.join(__dirname, css)
+
+  return {
+    output: {
+      chunkFilename: '[name].[chunkhash:4].js',
+      filename: '[name].[chunkhash:4].js'
+    },
+    entry,
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: html,
+        excludeAssets: [/css.*.js/],
+        minify: optimize
+          ? {
+              collapseWhitespace: true,
+              removeComments: false
+            }
+          : false
+      }),
+      new HtmlWebpackExcludeAssetsPlugin()
+    ]
+  }
+}
 
 exports.uglifyJavascript = () => ({
   optimization: {
