@@ -12,7 +12,8 @@ const developmentConfig = merge([
       stats: 'minimal',
       open: true,
       overlay: true,
-      publicPath: '/'
+      publicPath: '/',
+      host: '0.0.0.0'
     },
 
     plugins: [new CopyWebpackPlugin([{ from: './public', to: '' }])]
