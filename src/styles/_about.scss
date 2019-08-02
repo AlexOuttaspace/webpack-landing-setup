@@ -1,0 +1,15 @@
+.about {
+	margin-top: $header-height;
+
+	max-width: 50rem;
+	margin-top: 5rem;
+	margin-left: 5rem;
+
+	&__title {
+		font-size: 4rem;
+	}
+
+	&__paragraph {
+		font-size: 1.5rem;
+	}
+}
