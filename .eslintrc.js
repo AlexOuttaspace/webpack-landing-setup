@@ -1,27 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  "globals": {
-    "Promise": true,
-    "document": true,
-    "require": true,
-    "Intl": true,
-    "Map": true,
-    "module": true,
-    "process": true,
-    "console": true,
-    "window": true,
-    "setTimeout": true,
-    "setInterval": true,
-    "clearTimeout": true,
-    "clearInterval": true,
-    "XMLHttpRequest": true,
-    "google": true,
-    "grecaptcha": true,
-  },
-    "env": {
-      "jquery": true
-    },  
+  "env": {
+    "jquery": true
+  },  
   "extends": [
     "plugin:import/errors", // See https://github.com/benmosher/eslint-plugin-import
     "plugin:import/warnings",

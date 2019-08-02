@@ -24,6 +24,8 @@ If you want to serve build locally:
   serve -s dist/
 ```
 
+To add a new pages, go to file `pages.js` and add new entry to array, specifying js, scss and hbs files.
+
 ## Project Structure
 
 ```
