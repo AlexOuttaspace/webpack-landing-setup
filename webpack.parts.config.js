@@ -196,7 +196,7 @@ exports.loadHtml = ({ include, exclude } = {}) => {
           use: {
             loader: 'html-loader',
             options: {
-              root: path.resolve(__dirname, './src/'),
+              root: path.resolve(__dirname, './'),
               interpolate: true,
               attrs: ['img:src', 'source:src', 'link:href']
             }
