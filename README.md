@@ -1,6 +1,6 @@
 ## Development
 
-You need to use **Node.js** `v10.15.*` or later in your system.
+You need to use **Node.js** `v10.16.*` or later in your system.
 Use [nvm](https://github.com/creationix/nvm) to control node version.
 
 After cloning repo install dependencies
