@@ -1,8 +1,7 @@
-const path = require('path')
-
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const pagesConfigs = require('./pages')
 const parts = require('./webpack.parts.config')
 
 const developmentConfig = merge([
@@ -33,18 +32,9 @@ const developmentConfig = merge([
   parts.loadFonts()
 ])
 
-const pages = [
-  parts.page({
-    entry: {
-      js: path.join(__dirname, 'src/script/index.js'),
-      css: path.join(__dirname, 'src/styles/index.scss')
-    },
-
-    path: '',
-    template: path.join(__dirname, 'src/markup/index.hbs'),
-    excludeAssets: [/css.js/],
-    minify: false
-  })
-]
+const pages = pagesConfigs.map((config) => parts.page({
+  ...config,
+  optimize: false
+}))
 
 module.exports = pages.map((page) => merge([developmentConfig, page]))

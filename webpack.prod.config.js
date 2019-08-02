@@ -1,9 +1,8 @@
-const path = require('path')
-
 const merge = require('webpack-merge')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const pagesConfigs = require('./pages')
 const parts = require('./webpack.parts.config')
 
 const productionConfig = merge([
@@ -38,21 +37,9 @@ const productionConfig = merge([
   parts.loadFavicons()
 ])
 
-const pages = [
-  parts.page({
-    entry: {
-      js: path.join(__dirname, 'src/script/index.js'),
-      css: path.join(__dirname, 'src/styles/index.scss')
-    },
-
-    path: '',
-    template: path.join(__dirname, 'src/markup/index.hbs'),
-    excludeAssets: [/css.*.js/],
-    minify: {
-      collapseWhitespace: true,
-      removeComments: false
-    }
-  })
-]
+const pages = pagesConfigs.map((config) => parts.page({
+  ...config,
+  optimize: false
+}))
 
 module.exports = pages.map((page) => merge([productionConfig, page]))

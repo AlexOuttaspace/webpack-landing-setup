@@ -231,25 +231,28 @@ exports.loadFonts = ({ include, exclude } = {}) => {
 }
 
 exports.page = ({
-  path = '',
-  template = require.resolve('html-webpack-plugin/default_index.ejs'),
-  entry,
-  excludeAssets = [/css.*.js/],
-  minify
+  js,
+  css,
+  html,
+  optimize
 } = {}) => ({
   output: {
     chunkFilename: '[name].[chunkhash:4].js',
     filename: '[name].[chunkhash:4].js'
   },
-  entry,
+  entry: {
+    js: path.join(__dirname, js),
+    css: path.join(__dirname, css)
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: `${path && path + '/'}index.html`,
-      template,
-      excludeAssets,
-      minify
+      template: html,
+      excludeAssets: [/css.*.js/],
+      minify: optimize ? {
+        collapseWhitespace: true,
+        removeComments: false
+      } : false
     }),
-
     new HtmlWebpackExcludeAssetsPlugin()
   ]
 })
