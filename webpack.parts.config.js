@@ -69,6 +69,12 @@ exports.extractCSS = ({ include, exclude } = {}) => {
               }
             },
             {
+              loader: 'resolve-url-loader',
+              options: {
+                root: path.resolve(__dirname, './')
+              }
+            },
+            {
               loader: 'sass-loader',
               options: {
                 sourceMap: true
@@ -197,8 +203,7 @@ exports.loadHtml = ({ include, exclude } = {}) => {
             loader: 'html-loader',
             options: {
               root: path.resolve(__dirname, './'),
-              interpolate: true,
-              attrs: ['img:src', 'source:src', 'link:href']
+              interpolate: true
             }
           }
         }
@@ -234,6 +239,7 @@ exports.loadFonts = ({ include, exclude } = {}) => {
 exports.page = ({
   js,
   css,
+  name,
   html = require.resolve('html-webpack-plugin/default_index.ejs'),
   optimize
 }) => {
@@ -252,6 +258,7 @@ exports.page = ({
       new HtmlWebpackPlugin({
         template: html,
         excludeAssets: [/css.*.js/],
+        filename: `${name}.html`,
         minify: optimize
           ? {
               collapseWhitespace: true,

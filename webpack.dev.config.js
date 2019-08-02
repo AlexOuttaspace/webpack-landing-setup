@@ -23,7 +23,7 @@ const developmentConfig = merge([
   // using style-loader leads to fullpagejs incorrectly setting up section heights
   parts.extractCSS(),
 
-  parts.loadImages({ optimize: false }),
+  parts.loadImages(),
 
   parts.loadSVG({ optimize: false }),
 
@@ -38,7 +38,5 @@ const pages = pagesConfigs.map((config) =>
     optimize: false
   })
 )
-
-console.log(pages)
 
 module.exports = pages.map((page) => merge([developmentConfig, page]))
