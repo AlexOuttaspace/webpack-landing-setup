@@ -190,14 +190,15 @@ exports.loadHtml = ({ include, exclude } = {}) => {
     module: {
       rules: [
         {
-          test: /\.(html|hbs)$/,
+          test: /\.html$/,
           include,
           exclude,
           use: {
             loader: 'html-loader',
             options: {
+              root: path.resolve(__dirname, './src/'),
               interpolate: true,
-              attrs: ['img:src', 'link:href']
+              attrs: ['img:src', 'source:src', 'link:href']
             }
           }
         }
