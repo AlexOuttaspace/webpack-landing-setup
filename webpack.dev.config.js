@@ -32,9 +32,11 @@ const developmentConfig = merge([
   parts.loadFonts()
 ])
 
-const pages = pagesConfigs.map((config) => parts.page({
-  ...config,
-  optimize: false
-}))
+const pages = pagesConfigs.map((config) =>
+  parts.page({
+    ...config,
+    optimize: false
+  })
+)
 
 module.exports = pages.map((page) => merge([developmentConfig, page]))

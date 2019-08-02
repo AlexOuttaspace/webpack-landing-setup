@@ -99,7 +99,7 @@ exports.loadFavicons = () => ({
         favicons: true,
         firefox: true,
         windows: false,
-        yandex: false 
+        yandex: false
       }
     })
   ]
@@ -230,12 +230,7 @@ exports.loadFonts = ({ include, exclude } = {}) => {
   }
 }
 
-exports.page = ({
-  js,
-  css,
-  html,
-  optimize
-} = {}) => ({
+exports.page = ({ js, css, html, optimize } = {}) => ({
   output: {
     chunkFilename: '[name].[chunkhash:4].js',
     filename: '[name].[chunkhash:4].js'
@@ -248,10 +243,12 @@ exports.page = ({
     new HtmlWebpackPlugin({
       template: html,
       excludeAssets: [/css.*.js/],
-      minify: optimize ? {
-        collapseWhitespace: true,
-        removeComments: false
-      } : false
+      minify: optimize
+        ? {
+            collapseWhitespace: true,
+            removeComments: false
+          }
+        : false
     }),
     new HtmlWebpackExcludeAssetsPlugin()
   ]
