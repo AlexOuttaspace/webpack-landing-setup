@@ -196,15 +196,11 @@ exports.loadHtml = ({ include, exclude } = {}) => {
     module: {
       rules: [
         {
-          test: /\.html$/,
+          test: /\.(hbs|handlebars)$/,
           include,
           exclude,
           use: {
-            loader: 'html-loader',
-            options: {
-              root: path.resolve(__dirname, './'),
-              interpolate: true
-            }
+            loader: 'handlebars-loader'
           }
         }
       ]
