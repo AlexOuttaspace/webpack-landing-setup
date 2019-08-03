@@ -199,9 +199,24 @@ exports.loadHtml = ({ include, exclude } = {}) => {
           test: /\.(hbs|handlebars)$/,
           include,
           exclude,
-          use: {
-            loader: 'handlebars-loader'
-          }
+          use: [
+            {
+              loader: 'handlebars-loader',
+              query: { inlineRequires: '\/images\/' }
+            },
+            {
+              loader: 'extract-loader'
+            },
+            {
+              loader: 'html-loader',
+              options: {
+                attrs: [':data-src', 'img:src', 'img:srcset', 'source:srcset'],
+                options: {
+                    minimize: true
+                }
+              }
+            }
+          ]
         }
       ]
     }

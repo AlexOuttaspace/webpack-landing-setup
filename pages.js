@@ -10,5 +10,11 @@ module.exports = [
     js: 'src/script/about.js',
     css: 'src/styles/about.scss',
     html: 'src/markup/about.hbs'
+  },
+  {
+    name: 'contacts',
+    js: 'src/script/contacts.js',
+    css: 'src/styles/contacts.scss',
+    html: 'src/markup/contacts.hbs'
   }
 ]
