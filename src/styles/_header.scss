@@ -7,7 +7,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: #5D427A;
 
 	&__logo {
 		width: 3.5rem;
@@ -38,6 +38,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		color: #ffffff;
+		text-decoration: none;
+		border-bottom: 2px solid transparent;
+		border-top: 2px solid transparent;
+
+		&_current {
+			border-bottom-color: #ffffff;
+		}
 
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.1);
