@@ -130,7 +130,7 @@ exports.loadImages = ({ include, exclude } = {}) => {
             {
               loader: 'file-loader',
               options: {
-                name: 'assets/images/[name].[hash:4].[ext]'
+                name: '[name].[hash:4].[ext]'
               }
             }
           ]
@@ -145,7 +145,7 @@ exports.loadSVG = ({
   exclude,
   optimize = true,
   limit = 8000,
-  outputPath = 'assets/images'
+  outputPath = ''
 } = {}) => {
   return {
     module: {
@@ -233,7 +233,7 @@ exports.loadFonts = ({ include, exclude } = {}) => {
               loader: 'url-loader',
               options: {
                 limit: 25000,
-                outputPath: 'assets/fonts',
+                outputPath: '',
                 name: '[name].[hash:4].[ext]'
               }
             }
