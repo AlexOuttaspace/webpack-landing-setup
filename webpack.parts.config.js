@@ -201,8 +201,7 @@ exports.loadHtml = ({ include, exclude } = {}) => {
           exclude,
           use: [
             {
-              loader: 'handlebars-loader',
-              query: { inlineRequires: '\/images\/' }
+              loader: 'handlebars-loader'
             },
             {
               loader: 'extract-loader'
@@ -210,10 +209,8 @@ exports.loadHtml = ({ include, exclude } = {}) => {
             {
               loader: 'html-loader',
               options: {
-                attrs: [':data-src', 'img:src', 'img:srcset', 'source:srcset'],
-                options: {
-                    minimize: true
-                }
+                root: path.resolve(__dirname, './'),
+                minimize: true
               }
             }
           ]
