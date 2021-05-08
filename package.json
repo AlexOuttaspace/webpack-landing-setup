@@ -27,7 +27,7 @@
     "extract-loader": "^3.1.0",
     "favicons-webpack-plugin": "0.0.9",
     "file-loader": "^4.1.0",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-loader": "^0.5.5",
     "html-webpack-exclude-assets-plugin": "0.0.7",
