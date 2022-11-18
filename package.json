@@ -32,7 +32,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-exclude-assets-plugin": "0.0.7",
     "html-webpack-plugin": "^3.2.0",
-    "loader-utils": "^1.2.3",
+    "loader-utils": "^1.4.2",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "object-assign": "^4.1.1",
